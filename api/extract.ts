@@ -1,7 +1,7 @@
 // api/extract.ts
 import extract from '../extract';
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
 	if (req.method !== 'GET') {
 		res.status(405).send('Method Not Allowed');
 		return;
