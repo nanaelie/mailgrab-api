@@ -1,4 +1,3 @@
-// api/extract.ts
 import extract from '../extract';
 
 module.exports = async (req, res) => {
