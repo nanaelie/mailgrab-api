@@ -3,6 +3,7 @@ export default async function extract(url: string): Promise<string[]> {
 		const resp = await fetch(url);
 
 		if (!resp.ok) {
+			console.log('erreur lors du fetch');
 			return [];
 		}
 
@@ -10,6 +11,7 @@ export default async function extract(url: string): Promise<string[]> {
 		// const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
 		const regex = /(?<![a-zA-Z0-9._%+-])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-])/g;
 		const emails = text.match(regex) || [];
+		console.log(emails);
 		// const emails = Array.from(new Set(text.match(regex) || []));
 
 		return emails;
