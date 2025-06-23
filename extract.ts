@@ -7,7 +7,8 @@ export default async function extract(url: string): Promise<string[]> {
 		}
 
 		const text = await resp.text();
-		const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+		// const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+		const regex = /(?<![a-zA-Z0-9._%+-])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-])/g;
 		const emails = text.match(regex) || [];
 		// const emails = Array.from(new Set(text.match(regex) || []));
 
