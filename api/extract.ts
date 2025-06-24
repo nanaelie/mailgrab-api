@@ -1,5 +1,5 @@
-import { get_url_ctn, extract, siteMetaData } from '../extract';
-
+import { get_url_ctn, extract } from '../extract';
+// siteMetaData
 module.exports = async (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
