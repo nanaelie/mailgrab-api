@@ -21,4 +21,4 @@ async function get_url_ctn(url: string): Promise<string> {
 	}
 }
 
-export default {get_url_ctn, extract}
+export { get_url_ctn, extract }
