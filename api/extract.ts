@@ -1,4 +1,4 @@
-import extract from '../extract';
+import { extract, get_url_ctn } from '../extract';
 
 module.exports = async (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
