@@ -1,11 +1,11 @@
-function extract(text: string): string[] {
+export function extract(text: string): string[] {
 	// const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
 	const regex = /(?<![a-zA-Z0-9._%+-])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-])/g;
 	const emails = text.match(regex) || [];
 	return emails;
 }
 
-async function get_url_ctn(url: string): Promise<string> {
+export async function get_url_ctn(url: string): Promise<string> {
 	try {
 		const resp = await fetch(url);
 
@@ -21,4 +21,4 @@ async function get_url_ctn(url: string): Promise<string> {
 	}
 }
 
-export { get_url_ctn, extract }
+// export { get_url_ctn, extract }
