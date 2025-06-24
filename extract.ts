@@ -1,4 +1,11 @@
-export default async function extract(url: string): Promise<string[]> {
+function extract(text: string): string[] {
+	// const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+	const regex = /(?<![a-zA-Z0-9._%+-])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-])/g;
+	const emails = text.match(regex) || [];
+	return emails;
+}
+
+export default async function get_url_ctn(url: string): Promise<string> {
 	try {
 		const resp = await fetch(url);
 
@@ -6,16 +13,8 @@ export default async function extract(url: string): Promise<string[]> {
 			console.log('erreur lors du fetch');
 			return [];
 		}
-
 		const text = await resp.text();
-		// const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
-		const regex = /(?<![a-zA-Z0-9._%+-])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-])/g;
-		console.log(text);
-		const emails = text.match(regex) || [];
-		console.log(emails);
-		// const emails = Array.from(new Set(text.match(regex) || []));
-
-		return emails;
+		return text;
 	} catch (error) {
 		console.error('Erreur lors de l’extraction :', error);
 		return [];
