@@ -5,7 +5,7 @@ function extract(text: string): string[] {
 	return emails;
 }
 
-export default async function get_url_ctn(url: string): Promise<string> {
+async function get_url_ctn(url: string): Promise<string> {
 	try {
 		const resp = await fetch(url);
 
@@ -21,3 +21,4 @@ export default async function get_url_ctn(url: string): Promise<string> {
 	}
 }
 
+export default {get_url_ctn, extract}
