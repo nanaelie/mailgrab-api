@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
 	try {
 		const url = req.query.url as string;
-
+		
 		res.setHeader('Content-Type', 'application/json');
 		if (url.trim() === '') {
 			res.status(200).send({
@@ -20,7 +20,8 @@ module.exports = async (req, res) => {
 				message: "L'url est vide!",
 			});
 		} else {
-			const emails: string[] = await extract(url.trim());
+			const text: string = await get_url_ctn(url.trim())
+			const emails: string[] = extract(text);
 			res.status(200).send({
 				error: false,
 				message: emails,
