@@ -34,7 +34,7 @@ export async function siteMetaData(url: string) : siteMetaDataType {
 export function extract(text: string): string[] {
 	// const regex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
 	const regex = /(?<![a-zA-Z0-9._%+-])([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?![a-zA-Z0-9._%+-])/g;
-	const emails = text.match(regex) || [];
+	const emails = text.compile(regex) || [];
 	return emails;
 }
 
