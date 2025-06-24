@@ -7,7 +7,7 @@ type siteMetaData = {
 	title?: string;
 }
 
-export function siteMetaData(url: string) : siteMetaDataType {
+export async function siteMetaData(url: string) : siteMetaDataType {
 	try {
 		const resp = await fetch(url);
 
